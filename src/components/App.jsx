@@ -5,11 +5,24 @@ import Filter from './Filter/Filter';
 import ContactList from './ContactList/ContactList';
 import initialContacts from './initialContacts.json';
 
+const KEY_CONTACTS = 'contacts';
+
 class App extends Component {
   state = {
     contacts: initialContacts,
     filter: '',
   };
+
+componentDidMount(){
+const localData = JSON.parse(localStorage.getItem(KEY_CONTACTS))
+if(localData && localData.length) this.setState({contacts: localData})
+}
+
+componentDidUpdate(_,prevState){
+if(prevState.contacts.length !== this.state.contacts.length){
+  localStorage.setItem(KEY_CONTACTS, JSON.stringify(this.state.contacts))
+}
+}
 
   addContact = data => {
     const isAlreadyExist = this.state.contacts.find(
