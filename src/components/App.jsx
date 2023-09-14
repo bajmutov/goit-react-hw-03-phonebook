@@ -14,8 +14,8 @@ class App extends Component {
   };
 
 componentDidMount(){
-const localData = JSON.parse(localStorage.getItem(KEY_CONTACTS))
-if(localData.length) this.setState({contacts: localData})
+const localData = JSON.parse(null)
+if(localData && localData.length) this.setState({contacts: localData})
 }
 
 componentDidUpdate(_,prevState){
