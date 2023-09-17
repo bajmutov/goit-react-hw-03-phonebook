@@ -23,7 +23,6 @@ if(prevState.contacts.length !== this.state.contacts.length){
   localStorage.setItem(KEY_CONTACTS, JSON.stringify(this.state.contacts))
 }
 }
-
   addContact = data => {
     const isAlreadyExist = this.state.contacts.find(
       el => el.name === data.name
